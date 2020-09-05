@@ -40,6 +40,10 @@ function AddBook(props) {
 				},
 				refetchQueries: [{ query:  getBooksQuery }]
 		 });
+
+		// setName("");
+		// setGenre("");
+		// setAuthorId("");
 	}
 
   return (
