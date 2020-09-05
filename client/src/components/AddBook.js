@@ -41,9 +41,10 @@ function AddBook(props) {
 				refetchQueries: [{ query:  getBooksQuery }]
 		 });
 
-		// setName("");
-		// setGenre("");
-		// setAuthorId("");
+		// clearing the form after submit
+		setName("");
+		setGenre("");
+		setAuthorId("");
 	}
 
   return (
@@ -51,17 +52,17 @@ function AddBook(props) {
 
     	<div className="field">
     		<label>Book Name:</label>
-    		<input type="text" onChange={(e) => setName(e.target.value)} />
+    		<input type="text" onChange={(e) => setName(e.target.value)} value={name} />
     	</div>
 
     	<div className="field">
     		<label>Genre:</label>
-    		<input type="text" onChange={(e) => setGenre(e.target.value)} />
+    		<input type="text" onChange={(e) => setGenre(e.target.value)} value={genre} />
     	</div>
 
     	<div className="field">
     		<label>Author:</label>
-    		<select onChange={(e) => setAuthorId(e.target.value)}>
+    		<select onChange={(e) => setAuthorId(e.target.value)} value={authorId} >
     			<option>Select author</option>
     			{ displayAuthors() }
     		</select>
