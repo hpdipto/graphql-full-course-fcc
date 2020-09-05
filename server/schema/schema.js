@@ -131,7 +131,7 @@ const Mutation = new GraphQLObjectType({
 				name: {
 					type: new GraphQLNonNull(GraphQLString)
 				},
-				genra: {
+				genre: {
 					type: new GraphQLNonNull(GraphQLString)
 				},
 				authorId: {
