@@ -1,6 +1,9 @@
 const graphql = require('graphql');
 const _ = require('lodash');
 
+const Book = require('../models/Book');
+const Author = require('../models/Author');
+
 const { 
 	GraphQLObjectType,
 	GraphQLString,
@@ -9,22 +12,6 @@ const {
 	GraphQLSchema,
 	GraphQLID
 } = graphql;
-
-// dummy data
-var books = [
-	{name: 'Name of the Wind', genra: 'Fantasy', id: '1', authorId: '1'},
-	{name: 'The Final Empire', genra: 'Fantasy', id: '2', authorId: '2'},
-	{name: 'The Long Earth', genra: 'Sci-Fi', id: '3', authorId: '3'},
-	{name: 'The Hero of Ages', genra: 'Fantasy', id: '4', authorId: '2'},
-	{name: 'The Colour of Magic', genra: 'Fantasy', id: '5', authorId: '3'},
-	{name: 'The Light Fantastic', genra: 'Fantasy', id: '6', authorId: '3'}
-];
-
-var authors = [
-	{name: 'Patrick Rothfuss', age: 44, id: '1'},	
-	{name: 'Brandon Sanderson', age: 42, id: '2'},	
-	{name: 'Terry Pratchett', age: 66, id: '3'},	
-];
 
 
 
@@ -43,7 +30,7 @@ const BookType = new GraphQLObjectType({
 		author: {
 			type: AuthorType,
 			resolve(parent, args) {
-				return _.find(authors, { id: parent.authorId });
+				// return _.find(authors, { id: parent.authorId });
 			}
 		}
 	})
@@ -64,7 +51,7 @@ const AuthorType = new GraphQLObjectType({
 		books: {
 			type: GraphQLList(BookType),
 			resolve(parent, args) {
-				return _.filter(books, { authorId: parent.id })
+				// return _.filter(books, { authorId: parent.id })
 			}
 		}
 	})
@@ -82,7 +69,7 @@ const RootQuery = new GraphQLObjectType({
 			},
 			resolve(parent, args)  {
 				// code to get data from db / other source
-				return _.find(books, { id: args.id });
+				// return _.find(books, { id: args.id });
 			}
 		},
 
@@ -94,7 +81,7 @@ const RootQuery = new GraphQLObjectType({
 				}
 			},
 			resolve(parent, args) {
-				return _.find(authors, { id: args.id });
+				// return _.find(authors, { id: args.id });
 			}
 		},
 
@@ -108,7 +95,7 @@ const RootQuery = new GraphQLObjectType({
 		authors: {
 			type: GraphQLList(AuthorType),
 			resolve(parent, args) {
-				return authors;
+				// return authors;
 			}
 		}
 	}
